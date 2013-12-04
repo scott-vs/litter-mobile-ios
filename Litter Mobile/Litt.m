@@ -2,7 +2,7 @@
 //  Litt.m
 //  Litter Mobile
 //
-//  Created by Scott VonSchilling on 12/3/13.
+//  Created by Scott VonSchilling on 12/4/13.
 //  Copyright (c) 2013 Scott VonSchilling. All rights reserved.
 //
 
@@ -14,6 +14,7 @@
 
 @dynamic litt_id;
 @dynamic text;
+@dynamic date;
 @dynamic user;
 
 @end

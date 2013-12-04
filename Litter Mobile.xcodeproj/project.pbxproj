@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		93270D11184EA949004CAC0B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93270D0F184EA949004CAC0B /* Model.xcdatamodeld */; };
-		93270D1D184EAC69004CAC0B /* Litt.m in Sources */ = {isa = PBXBuildFile; fileRef = 93270D1C184EAC69004CAC0B /* Litt.m */; };
-		93270D20184EAC69004CAC0B /* LittUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 93270D1F184EAC69004CAC0B /* LittUser.m */; };
 		93E1B518184C194800DFF519 /* SVSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E1B517184C194800DFF519 /* SVSTableViewController.m */; };
 		93E1B51B184C1AE100DFF519 /* SVSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E1B51A184C1AE100DFF519 /* SVSLoginViewController.m */; };
+		93EF5799184F7A5D002CBC0C /* LittUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EF5798184F7A5D002CBC0C /* LittUser.m */; };
+		93EF579C184F7A5D002CBC0C /* Litt.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EF579B184F7A5D002CBC0C /* Litt.m */; };
 		93F11B7A184BA042000BA076 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93F11B79184BA042000BA076 /* Foundation.framework */; };
 		93F11B7C184BA042000BA076 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93F11B7B184BA042000BA076 /* CoreGraphics.framework */; };
 		93F11B7E184BA042000BA076 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93F11B7D184BA042000BA076 /* UIKit.framework */; };
@@ -41,14 +41,14 @@
 
 /* Begin PBXFileReference section */
 		93270D10184EA949004CAC0B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		93270D1B184EAC69004CAC0B /* Litt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Litt.h; sourceTree = "<group>"; };
-		93270D1C184EAC69004CAC0B /* Litt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Litt.m; sourceTree = "<group>"; };
-		93270D1E184EAC69004CAC0B /* LittUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LittUser.h; sourceTree = "<group>"; };
-		93270D1F184EAC69004CAC0B /* LittUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LittUser.m; sourceTree = "<group>"; };
 		93E1B516184C194800DFF519 /* SVSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSTableViewController.h; sourceTree = "<group>"; };
 		93E1B517184C194800DFF519 /* SVSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSTableViewController.m; sourceTree = "<group>"; };
 		93E1B519184C1AE100DFF519 /* SVSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSLoginViewController.h; sourceTree = "<group>"; };
 		93E1B51A184C1AE100DFF519 /* SVSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSLoginViewController.m; sourceTree = "<group>"; };
+		93EF5797184F7A5D002CBC0C /* LittUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LittUser.h; sourceTree = "<group>"; };
+		93EF5798184F7A5D002CBC0C /* LittUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LittUser.m; sourceTree = "<group>"; };
+		93EF579A184F7A5D002CBC0C /* Litt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Litt.h; sourceTree = "<group>"; };
+		93EF579B184F7A5D002CBC0C /* Litt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Litt.m; sourceTree = "<group>"; };
 		93F11B76184BA042000BA076 /* Litter Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Litter Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93F11B79184BA042000BA076 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93F11B7B184BA042000BA076 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -129,10 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				93270D0F184EA949004CAC0B /* Model.xcdatamodeld */,
-				93270D1B184EAC69004CAC0B /* Litt.h */,
-				93270D1E184EAC69004CAC0B /* LittUser.h */,
-				93270D1F184EAC69004CAC0B /* LittUser.m */,
-				93270D1C184EAC69004CAC0B /* Litt.m */,
 				93F11B88184BA042000BA076 /* SVSAppDelegate.h */,
 				93F11B89184BA042000BA076 /* SVSAppDelegate.m */,
 				93E1B519184C1AE100DFF519 /* SVSLoginViewController.h */,
@@ -144,6 +140,10 @@
 				93F11B8F184BA042000BA076 /* SVSViewController.m */,
 				93F11B91184BA042000BA076 /* Images.xcassets */,
 				93F11B80184BA042000BA076 /* Supporting Files */,
+				93EF5797184F7A5D002CBC0C /* LittUser.h */,
+				93EF5798184F7A5D002CBC0C /* LittUser.m */,
+				93EF579A184F7A5D002CBC0C /* Litt.h */,
+				93EF579B184F7A5D002CBC0C /* Litt.m */,
 			);
 			path = "Litter Mobile";
 			sourceTree = "<group>";
@@ -278,12 +278,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				93F11B90184BA042000BA076 /* SVSViewController.m in Sources */,
-				93270D20184EAC69004CAC0B /* LittUser.m in Sources */,
+				93EF5799184F7A5D002CBC0C /* LittUser.m in Sources */,
 				93E1B51B184C1AE100DFF519 /* SVSLoginViewController.m in Sources */,
 				93E1B518184C194800DFF519 /* SVSTableViewController.m in Sources */,
 				93F11B86184BA042000BA076 /* main.m in Sources */,
 				93F11B8A184BA042000BA076 /* SVSAppDelegate.m in Sources */,
-				93270D1D184EAC69004CAC0B /* Litt.m in Sources */,
+				93EF579C184F7A5D002CBC0C /* Litt.m in Sources */,
 				93270D11184EA949004CAC0B /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

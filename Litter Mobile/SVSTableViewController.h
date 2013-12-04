@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SVSTableViewController : UITableViewController <NSURLConnectionDataDelegate>
+@interface SVSTableViewController : UIViewController <NSURLConnectionDataDelegate,UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

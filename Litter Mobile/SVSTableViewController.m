@@ -13,6 +13,7 @@
 
 @interface SVSTableViewController (){
     NSMutableData *recievedData;
+    NSArray *littArray;
 }
 
 @end
@@ -32,6 +33,9 @@
 {
     [super viewDidLoad];
     
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
     NSURL *url = [NSURL URLWithString:@"http://0.0.0.0:5000/api/all"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"GET"];
@@ -41,6 +45,9 @@
     
     [connection start];
     
+    self.navigationController.navigationBarHidden = NO;
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	// Do any additional setup after loading the view.
 }
 
@@ -98,6 +105,14 @@
             NSLog(@"Not found");
             lUser.user_id = [user objectForKey:@"user_id"];
             lUser.user_name = [user objectForKey:@"user_name"];
+            lUser.real_name = [user objectForKey:@"real_name"];
+            lUser.toy = [user objectForKey:@"toy"];
+            lUser.spot = [user objectForKey:@"spot"];
+            lUser.bg_color = [user objectForKey:@"bg_color"];
+            lUser.bio = [user objectForKey:@"bio"];
+            //lUser.website = [user objectForKey:@"website"];
+            lUser.location = [user objectForKey:@"location"];
+            //lUser.image_url = [user objectForKey:@"image_url"];
             
             [usedUsers setObject:lUser forKey:lUser.user_id];
             
@@ -129,6 +144,11 @@
             newLitt.user = lu;
             newLitt.text = [litt objectForKey:@"text"];
             newLitt.litt_id = [litt objectForKey:@"litt_id"];
+            
+            NSDateFormatter *df = [[NSDateFormatter alloc] init];
+            [df setDateFormat:@"yyyy-MM-ddThh:mm:ssZ"];
+            NSDate *myDate = [df dateFromString: [litt objectForKey:@"date"]];
+            newLitt.date = myDate;
             [littList setObject:newLitt forKey:newLitt.litt_id];
             if (![context save:&error]) {
                 NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
@@ -137,7 +157,42 @@
         }
         
     }
+    littArray = [littList allValues];
+    
+    [self.tableView reloadData];
    
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"in table view");
+    return [littArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+    static NSString *simpleTableIdentifier = @"LittCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+    if (cell == nil){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
+    
+    Litt *l = [littArray objectAtIndex:indexPath.row];
+    
+    //cell.textLabel.text = l.text;
+    
+    //UIImageView *recipeImageView = (UIImageView *)[cell viewWithTag:100];
+    //recipeImageView.image = [UIImage imageNamed:recipe.imageFile];
+    UILabel *recipeNameLabel = (UILabel *)[cell viewWithTag:101];
+    recipeNameLabel.text = l.user.user_name;
+    UILabel *recipeDetailLabel = (UILabel *)[cell viewWithTag:102];
+    recipeDetailLabel.text = l.text;
+    
+    return cell;
+    
 }
 
 @end
