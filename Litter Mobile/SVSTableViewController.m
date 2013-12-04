@@ -157,7 +157,9 @@
         }
         
     }
-    littArray = [littList allValues];
+    NSArray * sortedKeys = [[[[littList allKeys] sortedArrayUsingSelector: @selector(compare:)] reverseObjectEnumerator] allObjects];
+
+    littArray = [littList objectsForKeys:sortedKeys notFoundMarker:[NSNull null]];
     
     [self.tableView reloadData];
    
