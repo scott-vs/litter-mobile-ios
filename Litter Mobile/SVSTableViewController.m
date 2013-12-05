@@ -14,7 +14,10 @@
 
 @interface SVSTableViewController (){
     NSMutableData *recievedData;
-    NSArray *littArray;
+    NSMutableArray *littArray;
+    NSURLConnection *getAllConnection;
+    NSURLConnection *postNewListConnection;
+    LittUser *myUser;
 }
 
 @end
@@ -42,9 +45,9 @@
     [request setHTTPMethod:@"GET"];
     
     
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self ];
+    getAllConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self ];
     
-    [connection start];
+    [getAllConnection start];
     
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.hidesBackButton = YES;
@@ -76,11 +79,7 @@
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
-    //NSString *returnString = [[NSString alloc] initWithData:recievedData encoding:NSUTF8StringEncoding];
-    //NSLog(@"%@",returnString);
-    
-    
-    //SVSAppDelegate *appDelegate = (SVSAppDelegate *)[[UIApplication sharedApplication]delegate];
+    if (connection == getAllConnection){
     id delegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [delegate managedObjectContext];
     
@@ -125,8 +124,6 @@
     }
     
     
-    
-    
     NSArray *litts = [responseJson objectForKey:@"Litts"];
     
     fetchRequest = [[NSFetchRequest alloc] init];
@@ -160,7 +157,33 @@
     }
     NSArray * sortedKeys = [[[[littList allKeys] sortedArrayUsingSelector: @selector(compare:)] reverseObjectEnumerator] allObjects];
 
-    littArray = [littList objectsForKeys:sortedKeys notFoundMarker:[NSNull null]];
+    NSArray *littArray1 = [littList objectsForKeys:sortedKeys notFoundMarker:[NSNull null]];
+    littArray = [[NSMutableArray alloc] initWithArray:littArray1];
+     myUser = [usedUsers objectForKey:self.userID];
+    }
+    else if (connection == postNewListConnection){
+        NSDictionary *responseJson = [NSJSONSerialization JSONObjectWithData:recievedData options:kNilOptions error:nil];
+        
+        NSNumber *sucess = [responseJson objectForKey:@"success"];
+        if ([sucess integerValue]){
+            NSManagedObjectContext *context = [self managedObjectContext];
+            Litt *newLitt = [NSEntityDescription insertNewObjectForEntityForName:@"Litt" inManagedObjectContext:context];
+            newLitt.user = myUser;
+            newLitt.text = self.littField.text;
+            newLitt.date = [NSDate date];
+            
+            newLitt.litt_id = [responseJson objectForKey:@"litt_id"];
+            NSLog(@"new litt %@", newLitt);
+            NSError *error;
+            if (![context save:&error]) {
+                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+            } else {
+                [littArray insertObject:newLitt atIndex:0];
+                self.littField.text = @"";
+            }
+        }
+        
+    }
     
     [self.tableView reloadData];
    
@@ -209,4 +232,20 @@
 }
 
 
+- (IBAction)newMessage:(id)sender {
+    NSString *urlString = [NSString stringWithFormat:@"http://0.0.0.0:5000/api/%@/litt",self.userID];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    
+    NSString *dataString = [NSString stringWithFormat:@"litt=%@", self.littField.text];
+    NSData *dataData = [dataString dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:dataData];
+    
+    postNewListConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self ];
+    recievedData = [[NSMutableData alloc] init];
+    [postNewListConnection start];
+
+}
 @end

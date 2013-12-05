@@ -13,5 +13,9 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSString *userID;
+@property (strong, nonatomic) IBOutlet UITextField *littField;
 
+
+
+- (IBAction)newMessage:(id)sender;
 @end
