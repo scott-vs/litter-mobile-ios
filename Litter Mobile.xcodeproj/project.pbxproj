@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		931084FA185000ED007A5E58 /* SVSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 931084F9185000ED007A5E58 /* SVSDetailViewController.m */; };
 		93270D11184EA949004CAC0B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93270D0F184EA949004CAC0B /* Model.xcdatamodeld */; };
+		935CDAAB185029BA0014B7C5 /* LittUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 935CDAAA185029BA0014B7C5 /* LittUser.m */; };
 		93E1B518184C194800DFF519 /* SVSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E1B517184C194800DFF519 /* SVSTableViewController.m */; };
 		93E1B51B184C1AE100DFF519 /* SVSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E1B51A184C1AE100DFF519 /* SVSLoginViewController.m */; };
-		93EF5799184F7A5D002CBC0C /* LittUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EF5798184F7A5D002CBC0C /* LittUser.m */; };
 		93EF579C184F7A5D002CBC0C /* Litt.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EF579B184F7A5D002CBC0C /* Litt.m */; };
 		93EF579F184FA3BF002CBC0C /* SVSNewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EF579E184FA3BF002CBC0C /* SVSNewUserViewController.m */; };
 		93F11B7A184BA042000BA076 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93F11B79184BA042000BA076 /* Foundation.framework */; };
@@ -44,12 +44,12 @@
 		931084F8185000ED007A5E58 /* SVSDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSDetailViewController.h; sourceTree = "<group>"; };
 		931084F9185000ED007A5E58 /* SVSDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSDetailViewController.m; sourceTree = "<group>"; };
 		93270D10184EA949004CAC0B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		935CDAA9185029BA0014B7C5 /* LittUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LittUser.h; sourceTree = "<group>"; };
+		935CDAAA185029BA0014B7C5 /* LittUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LittUser.m; sourceTree = "<group>"; };
 		93E1B516184C194800DFF519 /* SVSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSTableViewController.h; sourceTree = "<group>"; };
 		93E1B517184C194800DFF519 /* SVSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSTableViewController.m; sourceTree = "<group>"; };
 		93E1B519184C1AE100DFF519 /* SVSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSLoginViewController.h; sourceTree = "<group>"; };
 		93E1B51A184C1AE100DFF519 /* SVSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSLoginViewController.m; sourceTree = "<group>"; };
-		93EF5797184F7A5D002CBC0C /* LittUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LittUser.h; sourceTree = "<group>"; };
-		93EF5798184F7A5D002CBC0C /* LittUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LittUser.m; sourceTree = "<group>"; };
 		93EF579A184F7A5D002CBC0C /* Litt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Litt.h; sourceTree = "<group>"; };
 		93EF579B184F7A5D002CBC0C /* Litt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Litt.m; sourceTree = "<group>"; };
 		93EF579D184FA3BF002CBC0C /* SVSNewUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSNewUserViewController.h; sourceTree = "<group>"; };
@@ -132,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				93270D0F184EA949004CAC0B /* Model.xcdatamodeld */,
+				935CDAA9185029BA0014B7C5 /* LittUser.h */,
+				935CDAAA185029BA0014B7C5 /* LittUser.m */,
 				93F11B88184BA042000BA076 /* SVSAppDelegate.h */,
 				93F11B89184BA042000BA076 /* SVSAppDelegate.m */,
 				93E1B519184C1AE100DFF519 /* SVSLoginViewController.h */,
@@ -145,8 +147,6 @@
 				93EF579E184FA3BF002CBC0C /* SVSNewUserViewController.m */,
 				93F11B91184BA042000BA076 /* Images.xcassets */,
 				93F11B80184BA042000BA076 /* Supporting Files */,
-				93EF5797184F7A5D002CBC0C /* LittUser.h */,
-				93EF5798184F7A5D002CBC0C /* LittUser.m */,
 				93EF579A184F7A5D002CBC0C /* Litt.h */,
 				93EF579B184F7A5D002CBC0C /* Litt.m */,
 			);
@@ -282,8 +282,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93EF5799184F7A5D002CBC0C /* LittUser.m in Sources */,
 				93E1B51B184C1AE100DFF519 /* SVSLoginViewController.m in Sources */,
+				935CDAAB185029BA0014B7C5 /* LittUser.m in Sources */,
 				93EF579F184FA3BF002CBC0C /* SVSNewUserViewController.m in Sources */,
 				93E1B518184C194800DFF519 /* SVSTableViewController.m in Sources */,
 				93F11B86184BA042000BA076 /* main.m in Sources */,

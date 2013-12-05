@@ -112,12 +112,14 @@
             lUser.bio = [user objectForKey:@"bio"];
             //lUser.website = [user objectForKey:@"website"];
             lUser.location = [user objectForKey:@"location"];
-            //lUser.image_url = [user objectForKey:@"image_url"];
+            lUser.image_url = [user objectForKey:@"image_url"];
             
             [usedUsers setObject:lUser forKey:lUser.user_id];
             
             if (![context save:&error]) {
                 NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+            } else {
+                [lUser getPicture:entity forContext:context];
             }
         }
         
@@ -210,8 +212,9 @@
     
     //cell.textLabel.text = l.text;
     
-    //UIImageView *recipeImageView = (UIImageView *)[cell viewWithTag:100];
-    //recipeImageView.image = [UIImage imageNamed:recipe.imageFile];
+    UIImageView *userpic = (UIImageView *)[cell viewWithTag:100];
+    NSLog(@"userpic1: %@", userpic);
+    userpic.image = [UIImage imageWithData:l.user.userpic];
     UILabel *recipeNameLabel = (UILabel *)[cell viewWithTag:101];
     recipeNameLabel.text = l.user.user_name;
     UILabel *recipeDetailLabel = (UILabel *)[cell viewWithTag:102];
