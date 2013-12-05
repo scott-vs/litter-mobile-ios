@@ -25,6 +25,6 @@
 @property (nonatomic, retain) NSData * userpic;
 
 -(void) getPicture:(NSEntityDescription*) entity forContext:(NSManagedObjectContext*) context;
-
+- (UIColor *)backgroundColor;
 
 @end

@@ -16,5 +16,6 @@
 - (IBAction)closeBtn:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *username;
 @property (strong, nonatomic) IBOutlet UILabel *message;
+@property (strong, nonatomic) IBOutlet UIImageView *userpic;
 
 @end

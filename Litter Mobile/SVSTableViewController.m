@@ -39,6 +39,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     NSURL *url = [NSURL URLWithString:@"http://gentle-island-3072.herokuapp.com/api/all"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -113,6 +114,7 @@
             //lUser.website = [user objectForKey:@"website"];
             lUser.location = [user objectForKey:@"location"];
             lUser.image_url = [user objectForKey:@"image_url"];
+            //@"http://www.redrovercamping.com/sites/all/themes/rr2/images/default_usr.png"
             
             [usedUsers setObject:lUser forKey:lUser.user_id];
             
@@ -209,10 +211,11 @@
     }
     
     Litt *l = [littArray objectAtIndex:indexPath.row];
-    
+     NSLog(@"VIEW %@", l);
     //cell.textLabel.text = l.text;
     
-    cell.backgroundColor = [self colorFromHexString: l.user.bg_color];
+    cell.backgroundColor = [l.user backgroundColor];//[self colorFromHexString: l.user.bg_color];
+
     UIImageView *userpic = (UIImageView *)[cell viewWithTag:100];
     NSLog(@"userpic1: %@", userpic);
     userpic.image = [UIImage imageWithData:l.user.userpic];

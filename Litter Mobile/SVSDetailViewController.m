@@ -29,6 +29,8 @@
     
     self.username.text = self.myLitt.user.user_name;
     self.message.text = self.myLitt.text;
+    self.userpic.image = [UIImage imageWithData:self.myLitt.user.userpic];
+    self.view.backgroundColor = [self.myLitt.user backgroundColor];
 	// Do any additional setup after loading the view.
 }
 
