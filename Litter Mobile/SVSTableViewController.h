@@ -18,4 +18,5 @@
 
 
 - (IBAction)newMessage:(id)sender;
+- (UIColor *)colorFromHexString:(NSString *)hexString;
 @end
