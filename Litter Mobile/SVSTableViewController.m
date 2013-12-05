@@ -40,7 +40,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    NSURL *url = [NSURL URLWithString:@"http://0.0.0.0:5000/api/all"];
+    NSURL *url = [NSURL URLWithString:@"http://gentle-island-3072.herokuapp.com/api/all"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"GET"];
     
@@ -212,6 +212,7 @@
     
     //cell.textLabel.text = l.text;
     
+    
     UIImageView *userpic = (UIImageView *)[cell viewWithTag:100];
     NSLog(@"userpic1: %@", userpic);
     userpic.image = [UIImage imageWithData:l.user.userpic];
@@ -236,7 +237,7 @@
 
 
 - (IBAction)newMessage:(id)sender {
-    NSString *urlString = [NSString stringWithFormat:@"http://0.0.0.0:5000/api/%@/litt",self.userID];
+    NSString *urlString = [NSString stringWithFormat:@"http://gentle-island-3072.herokuapp.com/api/%@/litt",self.userID];
     NSURL *url = [NSURL URLWithString:urlString];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];

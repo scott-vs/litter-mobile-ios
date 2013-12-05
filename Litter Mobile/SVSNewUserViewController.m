@@ -74,7 +74,7 @@
     NSString *pass = self.password.text;
     pass = [self sha1:pass];
     
-    NSURL *url = [NSURL URLWithString:@"http://0.0.0.0:5000/api/newUser"];
+    NSURL *url = [NSURL URLWithString:@"http://gentle-island-3072.herokuapp.com/api/newUser"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
