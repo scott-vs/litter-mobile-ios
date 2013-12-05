@@ -20,7 +20,6 @@
 		93F11B86184BA042000BA076 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F11B85184BA042000BA076 /* main.m */; };
 		93F11B8A184BA042000BA076 /* SVSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F11B89184BA042000BA076 /* SVSAppDelegate.m */; };
 		93F11B8D184BA042000BA076 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93F11B8B184BA042000BA076 /* Main.storyboard */; };
-		93F11B90184BA042000BA076 /* SVSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F11B8F184BA042000BA076 /* SVSViewController.m */; };
 		93F11B92184BA042000BA076 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93F11B91184BA042000BA076 /* Images.xcassets */; };
 		93F11B99184BA042000BA076 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93F11B98184BA042000BA076 /* XCTest.framework */; };
 		93F11B9A184BA042000BA076 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93F11B79184BA042000BA076 /* Foundation.framework */; };
@@ -63,8 +62,6 @@
 		93F11B88184BA042000BA076 /* SVSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVSAppDelegate.h; sourceTree = "<group>"; };
 		93F11B89184BA042000BA076 /* SVSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVSAppDelegate.m; sourceTree = "<group>"; };
 		93F11B8C184BA042000BA076 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		93F11B8E184BA042000BA076 /* SVSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVSViewController.h; sourceTree = "<group>"; };
-		93F11B8F184BA042000BA076 /* SVSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVSViewController.m; sourceTree = "<group>"; };
 		93F11B91184BA042000BA076 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		93F11B97184BA042000BA076 /* Litter MobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Litter MobileTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93F11B98184BA042000BA076 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -141,8 +138,6 @@
 				93E1B517184C194800DFF519 /* SVSTableViewController.m */,
 				93EF579D184FA3BF002CBC0C /* SVSNewUserViewController.h */,
 				93EF579E184FA3BF002CBC0C /* SVSNewUserViewController.m */,
-				93F11B8E184BA042000BA076 /* SVSViewController.h */,
-				93F11B8F184BA042000BA076 /* SVSViewController.m */,
 				93F11B91184BA042000BA076 /* Images.xcassets */,
 				93F11B80184BA042000BA076 /* Supporting Files */,
 				93EF5797184F7A5D002CBC0C /* LittUser.h */,
@@ -282,7 +277,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93F11B90184BA042000BA076 /* SVSViewController.m in Sources */,
 				93EF5799184F7A5D002CBC0C /* LittUser.m in Sources */,
 				93E1B51B184C1AE100DFF519 /* SVSLoginViewController.m in Sources */,
 				93EF579F184FA3BF002CBC0C /* SVSNewUserViewController.m in Sources */,
