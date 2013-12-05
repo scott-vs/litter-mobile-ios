@@ -12,6 +12,7 @@
 		93E1B51B184C1AE100DFF519 /* SVSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E1B51A184C1AE100DFF519 /* SVSLoginViewController.m */; };
 		93EF5799184F7A5D002CBC0C /* LittUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EF5798184F7A5D002CBC0C /* LittUser.m */; };
 		93EF579C184F7A5D002CBC0C /* Litt.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EF579B184F7A5D002CBC0C /* Litt.m */; };
+		93EF579F184FA3BF002CBC0C /* SVSNewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EF579E184FA3BF002CBC0C /* SVSNewUserViewController.m */; };
 		93F11B7A184BA042000BA076 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93F11B79184BA042000BA076 /* Foundation.framework */; };
 		93F11B7C184BA042000BA076 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93F11B7B184BA042000BA076 /* CoreGraphics.framework */; };
 		93F11B7E184BA042000BA076 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93F11B7D184BA042000BA076 /* UIKit.framework */; };
@@ -49,6 +50,8 @@
 		93EF5798184F7A5D002CBC0C /* LittUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LittUser.m; sourceTree = "<group>"; };
 		93EF579A184F7A5D002CBC0C /* Litt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Litt.h; sourceTree = "<group>"; };
 		93EF579B184F7A5D002CBC0C /* Litt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Litt.m; sourceTree = "<group>"; };
+		93EF579D184FA3BF002CBC0C /* SVSNewUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSNewUserViewController.h; sourceTree = "<group>"; };
+		93EF579E184FA3BF002CBC0C /* SVSNewUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSNewUserViewController.m; sourceTree = "<group>"; };
 		93F11B76184BA042000BA076 /* Litter Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Litter Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93F11B79184BA042000BA076 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93F11B7B184BA042000BA076 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -136,6 +139,8 @@
 				93F11B8B184BA042000BA076 /* Main.storyboard */,
 				93E1B516184C194800DFF519 /* SVSTableViewController.h */,
 				93E1B517184C194800DFF519 /* SVSTableViewController.m */,
+				93EF579D184FA3BF002CBC0C /* SVSNewUserViewController.h */,
+				93EF579E184FA3BF002CBC0C /* SVSNewUserViewController.m */,
 				93F11B8E184BA042000BA076 /* SVSViewController.h */,
 				93F11B8F184BA042000BA076 /* SVSViewController.m */,
 				93F11B91184BA042000BA076 /* Images.xcassets */,
@@ -280,6 +285,7 @@
 				93F11B90184BA042000BA076 /* SVSViewController.m in Sources */,
 				93EF5799184F7A5D002CBC0C /* LittUser.m in Sources */,
 				93E1B51B184C1AE100DFF519 /* SVSLoginViewController.m in Sources */,
+				93EF579F184FA3BF002CBC0C /* SVSNewUserViewController.m in Sources */,
 				93E1B518184C194800DFF519 /* SVSTableViewController.m in Sources */,
 				93F11B86184BA042000BA076 /* main.m in Sources */,
 				93F11B8A184BA042000BA076 /* SVSAppDelegate.m in Sources */,
