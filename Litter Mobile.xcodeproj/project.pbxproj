@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		931084FA185000ED007A5E58 /* SVSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 931084F9185000ED007A5E58 /* SVSDetailViewController.m */; };
 		93270D11184EA949004CAC0B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93270D0F184EA949004CAC0B /* Model.xcdatamodeld */; };
 		93E1B518184C194800DFF519 /* SVSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E1B517184C194800DFF519 /* SVSTableViewController.m */; };
 		93E1B51B184C1AE100DFF519 /* SVSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E1B51A184C1AE100DFF519 /* SVSLoginViewController.m */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		931084F8185000ED007A5E58 /* SVSDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSDetailViewController.h; sourceTree = "<group>"; };
+		931084F9185000ED007A5E58 /* SVSDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSDetailViewController.m; sourceTree = "<group>"; };
 		93270D10184EA949004CAC0B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		93E1B516184C194800DFF519 /* SVSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSTableViewController.h; sourceTree = "<group>"; };
 		93E1B517184C194800DFF519 /* SVSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSTableViewController.m; sourceTree = "<group>"; };
@@ -134,6 +137,8 @@
 				93E1B519184C1AE100DFF519 /* SVSLoginViewController.h */,
 				93E1B51A184C1AE100DFF519 /* SVSLoginViewController.m */,
 				93F11B8B184BA042000BA076 /* Main.storyboard */,
+				931084F8185000ED007A5E58 /* SVSDetailViewController.h */,
+				931084F9185000ED007A5E58 /* SVSDetailViewController.m */,
 				93E1B516184C194800DFF519 /* SVSTableViewController.h */,
 				93E1B517184C194800DFF519 /* SVSTableViewController.m */,
 				93EF579D184FA3BF002CBC0C /* SVSNewUserViewController.h */,
@@ -285,6 +290,7 @@
 				93F11B8A184BA042000BA076 /* SVSAppDelegate.m in Sources */,
 				93EF579C184F7A5D002CBC0C /* Litt.m in Sources */,
 				93270D11184EA949004CAC0B /* Model.xcdatamodeld in Sources */,
+				931084FA185000ED007A5E58 /* SVSDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

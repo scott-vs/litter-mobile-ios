@@ -10,6 +10,7 @@
 #import "Litt.h"
 #import "LittUser.h"
 #import "SVSAppDelegate.h"
+#import "SVSDetailViewController.h"
 
 @interface SVSTableViewController (){
     NSMutableData *recievedData;
@@ -196,5 +197,16 @@
     return cell;
     
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"details"]) {
+        SVSDetailViewController *vc = (SVSDetailViewController*)[segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        vc.myLitt = [littArray objectAtIndex:indexPath.row];
+        
+    }
+}
+
 
 @end
