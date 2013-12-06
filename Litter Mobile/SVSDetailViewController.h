@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Litt.h"
 #import "LittUser.h"
+#import <MapKit/MapKit.h>
 
 @interface SVSDetailViewController : UIViewController
 
@@ -17,5 +18,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *username;
 @property (strong, nonatomic) IBOutlet UILabel *message;
 @property (strong, nonatomic) IBOutlet UIImageView *userpic;
+@property (strong, nonatomic) IBOutlet UILabel *bio;
+@property (strong, nonatomic) IBOutlet UILabel *toy;
+@property (strong, nonatomic) IBOutlet UILabel *spot;
+@property (strong, nonatomic) IBOutlet UIWebView *website;
+@property (strong, nonatomic) IBOutlet UILabel *location;
 
 @end
