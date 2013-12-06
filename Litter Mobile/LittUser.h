@@ -24,7 +24,7 @@
 @property (nonatomic, retain) NSString * website;
 @property (nonatomic, retain) NSData * userpic;
 
--(void) getPicture:(NSEntityDescription*) entity forContext:(NSManagedObjectContext*) context;
+-(void) getPicture:(NSEntityDescription*) entity forContext:(NSManagedObjectContext*) context forTable: (UITableView*) tableView;
 - (UIColor *)backgroundColor;
 
 @end

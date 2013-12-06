@@ -13,6 +13,7 @@
     NSEntityDescription *myEntity;
     NSManagedObjectContext *myContext;
     NSMutableData *recievedData;
+    UITableView *myTable;
 }
 
 @dynamic bg_color;
@@ -27,9 +28,10 @@
 @dynamic website;
 @dynamic userpic;
 
--(void) getPicture:(NSEntityDescription*) entity forContext:(NSManagedObjectContext *) context{
+-(void) getPicture:(NSEntityDescription*) entity forContext:(NSManagedObjectContext *) context forTable: (UITableView*) tableView{
     myEntity = entity;
     myContext = context;
+    myTable = tableView;
     
     NSURL *url = [NSURL URLWithString:self.image_url];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -59,6 +61,8 @@
     NSError *error;
     if (![myContext save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    } else {
+        [myTable reloadData];
     }
 }
 

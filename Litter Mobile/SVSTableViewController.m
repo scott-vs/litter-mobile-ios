@@ -121,7 +121,7 @@
             if (![context save:&error]) {
                 NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
             } else {
-                [lUser getPicture:entity forContext:context];
+                [lUser getPicture:entity forContext:context forTable:[self tableView]];
             }
         }
         
