@@ -111,7 +111,7 @@
             lUser.spot = [user objectForKey:@"spot"];
             lUser.bg_color = [user objectForKey:@"bg_color"];
             lUser.bio = [user objectForKey:@"bio"];
-            //lUser.website = [user objectForKey:@"website"];
+            lUser.website = [user objectForKey:@"website"];
             lUser.location = [user objectForKey:@"location"];
             lUser.image_url = [user objectForKey:@"image_url"];
             //@"http://www.redrovercamping.com/sites/all/themes/rr2/images/default_usr.png"

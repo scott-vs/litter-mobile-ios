@@ -35,6 +35,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIImage *bgImage =[UIImage imageNamed:@"litterlogin.png"];
+    bgImage.size.width;
+    self.view.backgroundColor = [UIColor colorWithPatternImage:bgImage];
+    //UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"litterlogin.png"]];
+    //backgroundImage.frame = CGRectMake(0,0, 640, 100);
+    
+    //backgroundImage.contentMode = UIViewContentModeScaleAspectFit;;
+    //backgroundImage.clipsToBounds = YES;
+
+    //[self.view addSubview:backgroundImage];
+    //[self.view sendSubviewToBack:backgroundImage];
 	// Do any additional setup after loading the view.
 }
 

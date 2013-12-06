@@ -58,11 +58,14 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="sgj-nA-xSH" kind="modal" identifier="createNew" modalTransitionStyle="flipHorizontal" id="aeX-zh-AHD"/>
+                                    <segue destination="sgj-nA-xSH" kind="modal" identifier="createNew" id="g2n-DA-Fc4"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.7254902124" green="0.8980392814" blue="0.97254908080000002" alpha="1" colorSpace="deviceRGB"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" none="YES" image="YES"/>
+                        </accessibility>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="dgs-AW-xYD"/>
                     <connections>
@@ -88,13 +91,19 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Login:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JxO-Nn-bvm">
-                                <rect key="frame" x="41" y="46" width="48" height="21"/>
+                                <rect key="frame" x="20" y="51" width="48" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irH-GF-knV">
-                                <rect key="frame" x="36" y="122" width="49" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irH-GF-knV">
+                                <rect key="frame" x="17" y="131" width="54" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Picture:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TU2-jc-nvX">
+                                <rect key="frame" x="21" y="283" width="59" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -148,7 +157,7 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="join"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06P-ET-ZIL">
-                                <rect key="frame" x="137" y="274" width="46" height="30"/>
+                                <rect key="frame" x="137" y="413" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Create">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -157,8 +166,32 @@
                                     <action selector="createBtn:" destination="sgj-nA-xSH" eventType="touchUpInside" id="cBC-nn-8s2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZy-aa-d80">
+                                <rect key="frame" x="185" y="361" width="96" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Select Picture">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="photoBtn:" destination="sgj-nA-xSH" eventType="touchUpInside" id="XgD-fW-fKR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSr-DZ-mdt">
+                                <rect key="frame" x="191" y="329" width="84" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Take Picture">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="takePhoto:" destination="sgj-nA-xSH" eventType="touchUpInside" id="1hG-RC-uqs"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YKp-dn-iOz">
+                                <rect key="frame" x="41" y="312" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.7254902124" green="0.8980392814" blue="0.97254908080000002" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="kL9-t7-ru7"/>
                     <connections>
@@ -169,13 +202,14 @@
                         <outlet property="spot" destination="1sd-la-qyr" id="gXx-G7-d1y"/>
                         <outlet property="toy" destination="dcD-4g-08H" id="tDI-d9-rG1"/>
                         <outlet property="username" destination="ROO-0R-EVj" id="nC3-xT-hCN"/>
+                        <outlet property="userpic" destination="YKp-dn-iOz" id="Jfg-01-130"/>
                         <outlet property="website" destination="I2A-nj-ukA" id="K2y-nc-zKr"/>
                         <segue destination="ehH-G5-Q0j" kind="modal" identifier="userCreated" id="wFG-T3-ie3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOJ-4t-Gaj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1908" y="868"/>
+            <point key="canvasLocation" x="1936" y="926"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="6dg-Sc-lnE">
@@ -261,7 +295,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQW-VP-EXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2437" y="239"/>
+            <point key="canvasLocation" x="2963" y="239"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Fwm-uN-xyA">
@@ -313,7 +347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jzL-GH-12d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2972" y="251"/>
+            <point key="canvasLocation" x="3498" y="251"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -322,6 +356,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="v1V-Pg-IUF"/>
+        <segue reference="wFG-T3-ie3"/>
     </inferredMetricsTieBreakers>
 </document>

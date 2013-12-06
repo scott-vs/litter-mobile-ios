@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SVSNewUserViewController : UIViewController <UITextFieldDelegate, NSURLConnectionDataDelegate>
+@interface SVSNewUserViewController : UIViewController <UITextFieldDelegate, NSURLConnectionDataDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *username;
 @property (strong, nonatomic) IBOutlet UITextField *password;
 @property (strong, nonatomic) IBOutlet UITextField *realname;
@@ -21,5 +21,8 @@
 
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+- (IBAction)photoBtn:(id)sender;
+@property (strong, nonatomic) IBOutlet UIImageView *userpic;
+- (IBAction)takePhoto:(id)sender;
 
 @end

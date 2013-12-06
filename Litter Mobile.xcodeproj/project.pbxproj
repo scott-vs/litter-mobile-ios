@@ -10,6 +10,7 @@
 		931084FA185000ED007A5E58 /* SVSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 931084F9185000ED007A5E58 /* SVSDetailViewController.m */; };
 		93270D11184EA949004CAC0B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93270D0F184EA949004CAC0B /* Model.xcdatamodeld */; };
 		935CDAAB185029BA0014B7C5 /* LittUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 935CDAAA185029BA0014B7C5 /* LittUser.m */; };
+		935CDAAD1851615B0014B7C5 /* litterlogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 935CDAAC1851615B0014B7C5 /* litterlogin.png */; };
 		93E1B518184C194800DFF519 /* SVSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E1B517184C194800DFF519 /* SVSTableViewController.m */; };
 		93E1B51B184C1AE100DFF519 /* SVSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E1B51A184C1AE100DFF519 /* SVSLoginViewController.m */; };
 		93EF579C184F7A5D002CBC0C /* Litt.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EF579B184F7A5D002CBC0C /* Litt.m */; };
@@ -46,6 +47,7 @@
 		93270D10184EA949004CAC0B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		935CDAA9185029BA0014B7C5 /* LittUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LittUser.h; sourceTree = "<group>"; };
 		935CDAAA185029BA0014B7C5 /* LittUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LittUser.m; sourceTree = "<group>"; };
+		935CDAAC1851615B0014B7C5 /* litterlogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = litterlogin.png; sourceTree = "<group>"; };
 		93E1B516184C194800DFF519 /* SVSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSTableViewController.h; sourceTree = "<group>"; };
 		93E1B517184C194800DFF519 /* SVSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSTableViewController.m; sourceTree = "<group>"; };
 		93E1B519184C1AE100DFF519 /* SVSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSLoginViewController.h; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		93F11B80184BA042000BA076 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				935CDAAC1851615B0014B7C5 /* litterlogin.png */,
 				93F11B81184BA042000BA076 /* Litter Mobile-Info.plist */,
 				93F11B82184BA042000BA076 /* InfoPlist.strings */,
 				93F11B85184BA042000BA076 /* main.m */,
@@ -262,6 +265,7 @@
 			files = (
 				93F11B92184BA042000BA076 /* Images.xcassets in Resources */,
 				93F11BAF184BACAE000BA076 /* user_data.plist in Resources */,
+				935CDAAD1851615B0014B7C5 /* litterlogin.png in Resources */,
 				93F11B84184BA042000BA076 /* InfoPlist.strings in Resources */,
 				93F11B8D184BA042000BA076 /* Main.storyboard in Resources */,
 			);

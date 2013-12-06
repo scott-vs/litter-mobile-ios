@@ -9,6 +9,7 @@
 #import "SVSNewUserViewController.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "SVSTableViewController.h"
+#import "LittUser.h"
 
 @interface SVSNewUserViewController (){
     NSMutableData *recievedData;
@@ -16,6 +17,7 @@
     NSData *plistXML;
     NSDictionary *plistDict;
     NSString *userID;
+    NSData *pngData;
 }
 
 @end
@@ -43,6 +45,8 @@
     self.location.delegate = self;
     self.website.delegate = self;
     self.bio.delegate = self;
+    
+    
 	// Do any additional setup after loading the view.
 }
 
@@ -79,7 +83,7 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
     
-    NSString *dataString = [NSString stringWithFormat:@"userName=%@&password=%@&realName=%@&toy=%@&spot=%@&bgColor=%@&bio=%@&location=%@&website=%@", self.username.text,pass,self.realname.text,self.toy.text,self.spot.text,@"FFFFFF",self.bio.text,self.location.text,self.website.text];
+    NSString *dataString = [NSString stringWithFormat:@"userName=%@&password=%@&realName=%@&toy=%@&spot=%@&bgColor=%@&bio=%@&location=%@&website=%@", self.username.text,pass,self.realname.text,self.toy.text,self.spot.text,@"#CCCCCC",self.bio.text,self.location.text,self.website.text];
     NSData *dataData = [dataString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:dataData];
     
@@ -145,7 +149,32 @@
         userID = uid;
         [plistDict writeToFile:plistPath atomically:YES];
         
-        [self performSegueWithIdentifier:@"userCreated" sender:self];
+        
+        NSManagedObjectContext *context = [self managedObjectContext];
+        NSError *error;
+        LittUser *lUser = [NSEntityDescription insertNewObjectForEntityForName:@"LittUser" inManagedObjectContext:context];
+        
+        lUser.user_id = [NSNumber numberWithInteger: [userID integerValue]];;
+        lUser.user_name = self.username.text;
+        lUser.real_name = self.realname.text;
+        lUser.toy = self.toy.text;
+        lUser.spot = self.toy.text;
+        lUser.bg_color = @"#CCCCCC";
+        lUser.bio = self.bio.text;
+        lUser.website = self.website.text;
+        lUser.location = self.location.text;
+        lUser.image_url = @"local";
+        lUser.userpic = pngData;
+        //@"http://www.redrovercamping.com/sites/all/themes/rr2/images/default_usr.png"
+        
+        if (![context save:&error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        } else {
+           [self performSegueWithIdentifier:@"userCreated" sender:self];
+        }
+        
+        
+        
     }
     
 
@@ -191,4 +220,42 @@
 
 
 
+- (IBAction)photoBtn:(id)sender {
+    UIImagePickerController *picker =[[UIImagePickerController alloc] init];
+    
+    picker.allowsEditing = YES;
+    picker.delegate = self;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    pngData = UIImagePNGRepresentation(chosenImage);
+    
+    self.userpic.image = [UIImage imageWithData:pngData];
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+
+- (IBAction)takePhoto:(id)sender {
+    UIImagePickerController *picker =[[UIImagePickerController alloc] init];
+    
+    picker.allowsEditing = YES;
+    picker.delegate = self;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    picker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+
+}
 @end
