@@ -106,6 +106,18 @@
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     recievedData = [[NSMutableData alloc] init];
+    if ([response respondsToSelector:@selector(statusCode)])
+    {
+        NSInteger statusCode = [((NSHTTPURLResponse *)response) statusCode];
+        if (statusCode != 200)
+        {
+            [connection cancel];  // stop connecting; no more delegate messages
+            NSLog(@"didReceiveResponse statusCode with %ld", (long)statusCode);
+            UIAlertView *errorAlert =[[UIAlertView alloc] initWithTitle:@"Server Failure" message:@"Our server appears to be down. Please let Scott know so that he can restart it." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [errorAlert show];
+            [self.activity stopAnimating];
+        }
+    }
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
@@ -115,11 +127,17 @@
 -(NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse{
     return nil;
 }
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
+    [self.activity stopAnimating];
+    UIAlertView *errorAlert =[[UIAlertView alloc] initWithTitle:@"Server Failure" message:@"Our server appears to be down. Please let Scott know so that he can restart it." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [errorAlert show];
+    
+}
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     [self.activity stopAnimating];
     NSDictionary *responseJson = [NSJSONSerialization JSONObjectWithData:recievedData options:kNilOptions error:nil];
-    
+    NSLog(@"response: %@", responseJson);
     NSNumber *sucess = [responseJson objectForKey:@"success"];
     if ([sucess integerValue]){
         // save user properties
