@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SVSLoginViewController : UIViewController<NSURLConnectionDataDelegate>
+@interface SVSLoginViewController : UIViewController<NSURLConnectionDataDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *userName;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 
 -(IBAction)loginButtonPressed;
 -(NSString *)sha1:(NSString*)input;

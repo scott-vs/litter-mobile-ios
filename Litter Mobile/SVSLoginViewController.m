@@ -35,24 +35,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIImage *bgImage =[UIImage imageNamed:@"litterlogin.png"];
-    bgImage.size.width;
-    self.view.backgroundColor = [UIColor colorWithPatternImage:bgImage];
-    //UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"litterlogin.png"]];
-    //backgroundImage.frame = CGRectMake(0,0, 640, 100);
     
-    //backgroundImage.contentMode = UIViewContentModeScaleAspectFit;;
-    //backgroundImage.clipsToBounds = YES;
-
-    //[self.view addSubview:backgroundImage];
-    //[self.view sendSubviewToBack:backgroundImage];
-	// Do any additional setup after loading the view.
+    // load backgound
+    UIImage *bgImage =[UIImage imageNamed:@"litterlogin.png"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:bgImage];
+    
+    //delagate text fields
+    self.userName.delegate = self;
+    self.password.delegate = self;
+    
+    // Activity monitor
+    self.activity.hidesWhenStopped = YES;
+    [self.view addSubview:self.activity];
 }
 
 
 
 - (void)viewDidAppear:(BOOL)animated{
-    
     // load user properties
     NSString *errorDesc = nil;
     NSPropertyListFormat format;
@@ -73,13 +72,9 @@
     
     NSString *username = [plistDict objectForKey:@"name"];
     
-    NSLog(@"plist: %@",plistDict);
     if (![username  isEqual: @""]){
-        NSLog(@"YES");
         [self performSegueWithIdentifier:@"tableLoad" sender:self];
     }
-    
-    //[plistXML writeToFile:plistPath atomically:YES];
     
 }
 
@@ -91,6 +86,8 @@
 
 
 -(IBAction)loginButtonPressed{
+    [self.activity startAnimating];
+    // Send login creds to sever
     NSString *uname = self.userName.text;
     NSString *pass = self.password.text;
     pass = [self sha1:pass];
@@ -104,39 +101,28 @@
     [request setHTTPBody:dataData];
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self ];
-    
     [connection start];
-    
-    NSLog(@"%@ %@", uname, [self sha1:pass]);
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     recievedData = [[NSMutableData alloc] init];
-    
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    
     [recievedData appendData:data];
-    
 }
 
 -(NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse{
-    
     return nil;
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
-    NSString *returnString = [[NSString alloc] initWithData:recievedData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",returnString);
-    
+    [self.activity stopAnimating];
     NSDictionary *responseJson = [NSJSONSerialization JSONObjectWithData:recievedData options:kNilOptions error:nil];
     
     NSNumber *sucess = [responseJson objectForKey:@"success"];
     if ([sucess integerValue]){
-        NSLog(@"Success");
-        
-        // load user properties
+        // save user properties
         NSString *errorDesc = nil;
         NSPropertyListFormat format;
         
@@ -160,18 +146,18 @@
         [plistDict setValue:uname forKey:@"name"];
         [plistDict setValue:uid forKey:@"uid"];
         userID = uid;
-        NSLog(@"plist: %@",plistXML);
         [plistDict writeToFile:plistPath atomically:YES];
         
         [self performSegueWithIdentifier:@"tableLoad" sender:self];
     } else {
-        NSLog(@"Nope");
+        UIAlertView *errorAlert =[[UIAlertView alloc] initWithTitle:@"Invalid Login" message:@"Invalid username and / or password." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [errorAlert show];
     }
     
 }
 
 
-
+// Create sha1 hash for password
 -(NSString*) sha1:(NSString*)input
 {
     const char *cstr = [input cStringUsingEncoding:NSUTF8StringEncoding];
@@ -192,19 +178,30 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"inside prepare for segue %@", [segue identifier]);
     if ([[segue identifier] isEqualToString:@"tableLoad"]) {
         SVSTableViewController *vc = (SVSTableViewController*)[segue destinationViewController];
-        
-        // Pass any objects to the view controller here, like...
         vc.managedObjectContext = self.managedObjectContext;
         vc.userID = userID;
-        NSLog(@"end segue");
         
     } else if ([[segue identifier] isEqualToString:@"createNew"]) {
         SVSNewUserViewController *vc = (SVSNewUserViewController*)[segue destinationViewController];
         vc.managedObjectContext = self.managedObjectContext;
     }
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField{
+    NSInteger nextTag = textField.tag + 1;
+    // Try to find next responder
+    UIResponder* nextResponder = [textField.superview viewWithTag:nextTag];
+    if (nextResponder) {
+        // Found next responder, so set it.
+        [nextResponder becomeFirstResponder];
+    } else {
+        // Not found, so remove keyboard.
+        [textField resignFirstResponder];
+    }
+    return NO;
+    
 }
 
 
