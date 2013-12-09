@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SVSTableViewController : UIViewController <NSURLConnectionDataDelegate,UITableViewDelegate, UITableViewDataSource>
+@interface SVSTableViewController : UIViewController <NSURLConnectionDataDelegate,UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSString *userID;
 @property (strong, nonatomic) IBOutlet UITextField *littField;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 
 
 

@@ -240,6 +240,10 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.7254902124" green="0.8980392814" blue="0.97254908080000002" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="sectionIndexTrackingBackgroundColor" red="0.7254902124" green="0.8980392814" blue="0.97254908080000002" alpha="1" colorSpace="deviceRGB"/>
+                                <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="DPc-Om-7Ya">
+                                    <rect key="frame" x="0.0" y="104" width="320" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LittCell" rowHeight="82" id="3bQ-Ut-8fs">
                                         <rect key="frame" x="0.0" y="22" width="320" height="82"/>
@@ -301,6 +305,7 @@
                         <color key="backgroundColor" red="0.7254902124" green="0.8980392814" blue="0.97254908080000002" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <connections>
+                        <outlet property="activity" destination="DPc-Om-7Ya" id="6LT-AY-YNS"/>
                         <outlet property="littField" destination="R97-Sl-glV" id="Ggy-GL-E8C"/>
                         <outlet property="tableView" destination="rss-cb-ZEg" id="wPV-i3-ktD"/>
                     </connections>

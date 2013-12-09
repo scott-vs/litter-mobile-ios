@@ -41,6 +41,8 @@
     self.tableView.delegate = self;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
+    self.littField.delegate = self;
+    
     NSURL *url = [NSURL URLWithString:@"http://gentle-island-3072.herokuapp.com/api/all"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"GET"];
@@ -53,6 +55,10 @@
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.hidesBackButton = YES;
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    // Activity monitor
+    self.activity.hidesWhenStopped = YES;
+    [self.view addSubview:self.activity];
 	// Do any additional setup after loading the view.
 }
 
@@ -97,13 +103,9 @@
     for (LittUser *user in fetchedObjects) {
         [usedUsers setObject:user forKey:user.user_id];
     }
-    NSLog(@"Used users: %@", usedUsers);
     for (NSDictionary *user in users){
-        NSLog(@"%@", [user objectForKey:@"user_id"]);
-        NSLog(@"%@", [user objectForKey:@"user_name"]);
         LittUser *lUser = [NSEntityDescription insertNewObjectForEntityForName:@"LittUser" inManagedObjectContext:context];
         if (![[usedUsers allKeys] containsObject:[user objectForKey:@"user_id"]]){
-            NSLog(@"Not found");
             lUser.user_id = [user objectForKey:@"user_id"];
             lUser.user_name = [user objectForKey:@"user_name"];
             lUser.real_name = [user objectForKey:@"real_name"];
@@ -177,7 +179,6 @@
             newLitt.date = [NSDate date];
             
             newLitt.litt_id = [responseJson objectForKey:@"litt_id"];
-            NSLog(@"new litt %@", newLitt);
             NSError *error;
             if (![context save:&error]) {
                 NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
@@ -194,7 +195,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"in table view");
     return [littArray count];
 }
 
@@ -211,13 +211,10 @@
     }
     
     Litt *l = [littArray objectAtIndex:indexPath.row];
-     NSLog(@"VIEW %@", l);
-    //cell.textLabel.text = l.text;
     
     cell.backgroundColor = [l.user backgroundColor];//[self colorFromHexString: l.user.bg_color];
 
     UIImageView *userpic = (UIImageView *)[cell viewWithTag:100];
-    NSLog(@"userpic1: %@", userpic);
     userpic.image = [UIImage imageWithData:l.user.userpic];
     UILabel *recipeNameLabel = (UILabel *)[cell viewWithTag:101];
     recipeNameLabel.text = l.user.user_name;
@@ -240,6 +237,8 @@
 
 
 - (IBAction)newMessage:(id)sender {
+    [self.littField resignFirstResponder];
+    [self.activity startAnimating];
     NSString *urlString = [NSString stringWithFormat:@"http://gentle-island-3072.herokuapp.com/api/%@/litt",self.userID];
     NSURL *url = [NSURL URLWithString:urlString];
     
@@ -247,6 +246,7 @@
     [request setHTTPMethod:@"POST"];
     
     NSString *dataString = [NSString stringWithFormat:@"litt=%@", self.littField.text];
+    dataString = [dataString stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
     NSData *dataData = [dataString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:dataData];
     
@@ -254,6 +254,11 @@
     recievedData = [[NSMutableData alloc] init];
     [postNewListConnection start];
 
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return NO;
 }
 
 - (UIColor *)colorFromHexString:(NSString *)hexString {
