@@ -46,7 +46,9 @@
     self.website.delegate = self;
     self.bio.delegate = self;
     
-    
+    // Activity monitor
+    self.activity.hidesWhenStopped = YES;
+    [self.view addSubview:self.activity];
 	// Do any additional setup after loading the view.
 }
 
@@ -66,31 +68,40 @@
     } else {
         // Not found, so remove keyboard.
         [textField resignFirstResponder];
-        [self createBtn:self];
     }
     return NO;
 
 }
 
 
-
 - (IBAction)createBtn:(id)sender {
-    NSString *pass = self.password.text;
-    pass = [self sha1:pass];
-    
-    NSURL *url = [NSURL URLWithString:@"http://gentle-island-3072.herokuapp.com/api/newUser"];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [request setHTTPMethod:@"POST"];
-    
-    NSString *dataString = [NSString stringWithFormat:@"userName=%@&password=%@&realName=%@&toy=%@&spot=%@&bgColor=%@&bio=%@&location=%@&website=%@", self.username.text,pass,self.realname.text,self.toy.text,self.spot.text,@"#CCCCCC",self.bio.text,self.location.text,self.website.text];
-    NSData *dataData = [dataString dataUsingEncoding:NSUTF8StringEncoding];
-    [request setHTTPBody:dataData];
-    
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self ];
-    
-    [connection start];
-    
+    if ([self.username.text length] == 0 || [self.password.text length] == 0
+        || [self.realname.text length] == 0 || [self.location.text length] == 0
+        || [self.website.text length] == 0 || [self.bio.text length] == 0
+        || [self.toy.text length] == 0 || [self.spot.text length] == 0) {
+        UIAlertView *errorAlert =[[UIAlertView alloc] initWithTitle:@"Incomplete" message:@"Please fill out all values." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [errorAlert show];
+        
+    } else {
+        [self.activity startAnimating];
+        
+        NSString *pass = self.password.text;
+        pass = [self sha1:pass];
+        
+        NSURL *url = [NSURL URLWithString:@"http://gentle-island-3072.herokuapp.com/api/newUser"];
+        
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+        [request setHTTPMethod:@"POST"];
+        
+        NSString *dataString = [NSString stringWithFormat:@"userName=%@&password=%@&realName=%@&toy=%@&spot=%@&bgColor=%@&bio=%@&location=%@&website=%@", self.username.text,pass,self.realname.text,self.toy.text,self.spot.text,@"#CCCCCC",self.bio.text,self.location.text,self.website.text];
+        dataString = [dataString stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
+        NSData *dataData = [dataString dataUsingEncoding:NSUTF8StringEncoding];
+        [request setHTTPBody:dataData];
+        
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self ];
+        NSLog(@"Starting connections:");
+        [connection start];
+    }
 
     
 }
@@ -99,6 +110,18 @@
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     recievedData = [[NSMutableData alloc] init];
+    if ([response respondsToSelector:@selector(statusCode)])
+    {
+        NSInteger statusCode = [((NSHTTPURLResponse *)response) statusCode];
+        if (statusCode != 200)
+        {
+            [connection cancel];  // stop connecting; no more delegate messages
+            NSLog(@"didReceiveResponse statusCode with %ld", (long)statusCode);
+            UIAlertView *errorAlert =[[UIAlertView alloc] initWithTitle:@"Server Failure" message:@"Our server appears to be down. Please let Scott know so that he can restart it." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [errorAlert show];
+            [self.activity stopAnimating];
+        }
+    }
     
 }
 
@@ -108,12 +131,20 @@
     
 }
 
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
+    [self.activity stopAnimating];
+    UIAlertView *errorAlert =[[UIAlertView alloc] initWithTitle:@"Server Failure" message:@"Our server appears to be down. Please let Scott know so that he can restart it." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [errorAlert show];
+    
+}
+
 -(NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse{
     
     return nil;
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    [self.activity stopAnimating];
     NSString *returnString = [[NSString alloc] initWithData:recievedData encoding:NSUTF8StringEncoding];
     NSLog(@"%@",returnString);
     
@@ -158,14 +189,13 @@
         lUser.user_name = self.username.text;
         lUser.real_name = self.realname.text;
         lUser.toy = self.toy.text;
-        lUser.spot = self.toy.text;
+        lUser.spot = self.spot.text;
         lUser.bg_color = @"#CCCCCC";
         lUser.bio = self.bio.text;
         lUser.website = self.website.text;
         lUser.location = self.location.text;
         lUser.image_url = @"local";
         lUser.userpic = pngData;
-        //@"http://www.redrovercamping.com/sites/all/themes/rr2/images/default_usr.png"
         
         if (![context save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
@@ -203,18 +233,13 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"inside prepare for segue %@", [segue identifier]);
     if ([[segue identifier] isEqualToString:@"userCreated"]) {
-        //[[segue destinationViewController] setDelegate:self];
-        
         // Get reference to the destination view controller
         SVSTableViewController *vc = (SVSTableViewController*)[segue destinationViewController];
         
         // Pass any objects to the view controller here, like...
         vc.managedObjectContext = self.managedObjectContext;
         vc.userID = userID;
-        NSLog(@"end segue");
-        
     }
 }
 

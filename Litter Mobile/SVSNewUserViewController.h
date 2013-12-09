@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *location;
 @property (strong, nonatomic) IBOutlet UITextField *website;
 @property (strong, nonatomic) IBOutlet UITextField *bio;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 - (IBAction)createBtn:(id)sender;
 
 
